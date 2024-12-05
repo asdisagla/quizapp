@@ -5,11 +5,16 @@ import 'package:adv_basics/questions_summary.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({super.key, required this.chosenAnswers,required this.onRestart});
-});
+  const ResultsScreen({
+    super.key,
+    required this.chosenAnswers,
+    required this.onRestart,
+  });
+
 
   final List<String> chosenAnswers;
   final VoidCallback onRestart;
+
 
   List<Map<String, Object >> getSummaryData(){
     final List<Map<String, Object>> summary =[];
@@ -31,7 +36,7 @@ class ResultsScreen extends StatelessWidget {
 
 
   @override
-  Widget build(BuildContext context, dynamic texAlign) {
+  Widget build(BuildContext context) {
     final summaryData = getSummaryData();
     final numTotalQuestions = questions.length;
     final numCorrectQuestions = summaryData.where((data){
@@ -62,6 +67,9 @@ class ResultsScreen extends StatelessWidget {
             ),
             TextButton(
               onPressed: onRestart,
+              style: OutlinedButton.styleFrom(
+              foregroundColor: Colors.white,
+            ),
               child: const Text("restart Quiz"),
             )
           ],
